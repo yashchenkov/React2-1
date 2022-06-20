@@ -2,20 +2,21 @@ import React from 'react';
 
 export default function Toolbar(props) {
   const { filters, selected, onSelectFilter } = props;
-  const toolbar = document.createElement('div');
-  toolbar.classList.add('toolbar');
+  const toolbar = [];
+  filters.forEach((elem, index) => {
+    const tag = elem === selected ? React.createElement('button', {
+      className: 'toolbar-elem selected',
+      onClick: onSelectFilter,
+      key: index
+    }, elem) : React.createElement('button', {
+      className: 'toolbar-elem',
+      onClick: onSelectFilter,
+      key: index
+    }, elem);
 
-  filters.forEach(filter => {
-    const tbElem = document.createElement('div');
-    tbElem.classList.add('toolbar-elem');
-    if(filter === selected) {
-      tbElem.classList.add('selected');
-    }
-    tbElem.textContent = filter;
-    toolbar.appendChild(tbElem);
+    toolbar.push(tag);
   });
-
   return (
-	<div>${toolbar}</div>
+	  toolbar
   );
 }
