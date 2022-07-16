@@ -4,7 +4,9 @@ export default function ProjectList(props) {
   const { projects } = props;
   return (
    <div>{projects.map(o => {
-    return <img src={o.img} />
+    if(o !== undefined) {
+      return <img src={o.img} />
+    }
    })}</div>
   );
 }

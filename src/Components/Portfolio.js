@@ -20,10 +20,11 @@ export default function Portfolio() {
   	    selected={selected}
   	    onSelectFilter= {(evt) => {
           evt.preventDefault();
+          console.log(evt.target.textContent)
           selectFilter(evt.target.textContent);
           setFiltered(
-            selected === 'All' ? projects : projects.map(o => {
-              if(o.category === selected) {
+            evt.target.textContent === 'All' ? projects : projects.map(o => {
+              if(o.category === evt.target.textContent) {
                 return o;
               }
             })
