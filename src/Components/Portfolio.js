@@ -23,11 +23,7 @@ export default function Portfolio() {
           console.log(evt.target.textContent)
           selectFilter(evt.target.textContent);
           setFiltered(
-            evt.target.textContent === 'All' ? projects : projects.map(o => {
-              if(o.category === evt.target.textContent) {
-                return o;
-              }
-            })
+            evt.target.textContent === 'All' ? projects : projects.filter(o => o.category === evt.target.textContent)
           );
         }}
   	  />
